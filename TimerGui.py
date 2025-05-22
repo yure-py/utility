@@ -48,10 +48,8 @@ class Main(Settings):
         self.label1 = tk.Label(self.f_clock, **self.labels)
         self.label2 = tk.Label(self.f_clock, **self.labels)
 
-        self.button_start = tk.Button(root, command=self.clock, text=u"\u25b6",
-                                      **self.button)
-        self.button_pause = tk.Button(root, text=u"\u25FB", command=self.pausecommand,
-                                      **self.button)
+        self.button_start = tk.Button(root, command=self.clock, text=u"\u25b6", **self.button)
+        self.button_pause = tk.Button(root, text=u"\u25FB", command=self.pausecommand, **self.button)
 
         self.configuration_and_grid()
         self.style_configure()
