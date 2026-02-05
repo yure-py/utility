@@ -134,7 +134,6 @@ class Main(Settings):
 
 
 if __name__ == "__main__":
-    os.chdir("/home/yure/PycharmProjects/pythonProject3")
     root = tk.Tk()
     root.title("Cronometro.py")
     root.geometry("+1500-700")
