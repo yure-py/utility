@@ -77,3 +77,51 @@ Com o alias configurado, o processo de criação de um novo projeto fica muito m
 4. Caso não esteja, reinstale o Python e lembre-se de marcar a caixa: **"Add Python to PATH"** na primeira tela do instalador.
 
 ---
+
+## 5. Mantendo o Alias Persistente no Windows
+
+Se o comando `ng-init` não funcionar ao abrir um novo terminal ou logo após a configuração, é porque o Git Bash não leu as atualizações. Siga este passo a passo para garantir a persistência e ativação imediata.
+
+### Passo a Passo da Configuração:
+
+1.  **Adicionar o Alias ao .bashrc**:
+    Execute este comando para gravar o alias no final do seu arquivo de configuração (substitua a URL pela sua do Gist):
+    
+    ```bash
+    echo "alias ng-init='curl -s \"SUA_URL_RAW_AQUI\" > /tmp/ng_init.py && python /tmp/ng_init.py'" >> ~/.bashrc
+    ```
+
+2.  **Vincular o .bashrc ao .bash_profile**:
+    No Windows, o Git Bash inicia procurando o arquivo `.bash_profile`. Precisamos dizer a ele para ler também o seu `.bashrc`. Rode este comando:
+    
+    ```bash
+    echo "[[ -f ~/.bashrc ]] && . ~/.bashrc" >> ~/.bash_profile
+    ```
+
+3.  **Conferir se tudo está certo**:
+    Abra o arquivo para confirmar que a linha foi gravada corretamente:
+    ```bash
+    nano ~/.bashrc
+    ```
+    *Se estiver tudo certo, saia com `Ctrl+X`.*
+
+4.  **Ativar as alterações (Passo Final)**:
+    O Bash não recarrega as configurações automaticamente. Para que o comando funcione **agora mesmo**, nesta janela, execute:
+    
+    ```bash
+    source ~/.bashrc
+    ```
+
+5.  **Testar**:
+    Agora o comando deve funcionar perfeitamente:
+    ```bash
+    ng-init
+    ```
+
+### Por que isso é necessário?
+
+
+
+O comando `source` força o terminal a reler o arquivo de configuração imediatamente. Sem ele, você teria que fechar todas as janelas do Git Bash e abrir novamente para que as mudanças fizessem efeito.
+
+---
